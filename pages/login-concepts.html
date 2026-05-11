@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fake Login Page Concepts — Conceptual analysis of phishing login pages for awareness training.">
+  <title>Fake Login Concepts — SecureBait</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-brand"><span class="shield">🛡️</span><span>SecureBait</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="lab-setup.html">Lab Setup</a></li>
+      <li><a href="simulation.html">Simulation</a></li>
+      <li><a href="templates.html">Templates</a></li>
+      <li><a href="login-concepts.html" class="active">Login Pages</a></li>
+      <li><a href="metrics.html">Metrics</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="prevention.html">Prevention</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="ethical-banner"><span class="icon">⚠️</span> EDUCATIONAL USE ONLY — Conceptual analysis only. No deployable code or operational pages.</div>
+
+  <main class="main-content">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <div class="hero-badge fade-in">🔐 Module 04</div>
+      <h1 class="fade-in fade-in-d1">Fake Login <span class="gradient-text">Concepts</span></h1>
+      <p class="fade-in fade-in-d2">Conceptual analysis of what phishing login pages look like and how to identify them.</p>
+    </section>
+
+    <div class="page-content">
+      <div class="info-box warning fade-in">
+        <div class="info-title">⚠️ No Deployable Code</div>
+        <p>This section provides <strong>conceptual analysis only</strong>. No functional login pages, credential capture mechanisms, or deployable code is included. The purpose is solely to teach users what to look for.</p>
+      </div>
+
+      <h2>Purpose of Awareness Pages</h2>
+      <p>In a phishing simulation, when a user clicks a simulated phishing link, they should be redirected to an <strong>awareness training page</strong> — not a functional credential harvesting page. This page serves to:</p>
+      <ul>
+        <li><strong>Educate:</strong> Explain that the user just clicked a simulated phishing link</li>
+        <li><strong>Inform:</strong> Highlight the red flags they should have noticed</li>
+        <li><strong>Train:</strong> Provide actionable steps for future prevention</li>
+        <li><strong>Support:</strong> Reassure the user — no data was captured, this is a learning opportunity</li>
+      </ul>
+
+      <h2>Anatomy of a Phishing Login Page</h2>
+      <p>Understanding what makes a phishing page deceptive helps users identify them. Below is a conceptual breakdown of the elements attackers typically include:</p>
+
+      <div class="arch-diagram fade-in">
+        <div style="text-align:center; font-weight:800; margin-bottom:1.5rem; color:var(--accent-red);">
+          🔍 Conceptual Phishing Page Layout — For Analysis Only
+        </div>
+        <div class="arch-row">
+          <div class="arch-box amber" style="max-width:100%; flex:none; width:100%;">
+            🌐 Address Bar: <code>http://login-exampl3.com/signin</code>
+            <small>🔴 RED FLAG — Misspelled domain, no HTTPS, no padlock</small>
+          </div>
+        </div>
+        <div class="arch-connector">↓</div>
+        <div class="arch-row">
+          <div class="arch-box blue" style="max-width:100%; flex:none; width:100%;">
+            🏢 Company Logo (Copied) + "Sign in to your account"
+            <small>🟡 Visual mimicry of legitimate branding</small>
+          </div>
+        </div>
+        <div class="arch-connector">↓</div>
+        <div class="arch-row">
+          <div class="arch-box purple" style="max-width:100%; flex:none; width:100%;">
+            📝 Email / Username Input Field + Password Input Field
+            <small>🔴 Form action points to attacker-controlled server</small>
+          </div>
+        </div>
+        <div class="arch-connector">↓</div>
+        <div class="arch-row">
+          <div class="arch-box red" style="max-width:100%; flex:none; width:100%;">
+            🔘 "Sign In" Button
+            <small>🔴 Submits credentials to attacker, not legitimate service</small>
+          </div>
+        </div>
+        <div class="arch-connector">↓</div>
+        <div class="arch-row">
+          <div class="arch-box cyan" style="max-width:100%; flex:none; width:100%;">
+            🔗 "Forgot password?" / "Create account" (non-functional links)
+            <small>🟡 Added for visual legitimacy — often broken or redirect nowhere</small>
+          </div>
+        </div>
+      </div>
+
+      <h2>Key Red Flags to Teach Users</h2>
+      <table class="report-table fade-in">
+        <thead>
+          <tr><th>Red Flag</th><th>What to Check</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>URL / Domain</strong></td>
+            <td>Is the domain spelled correctly? Is it HTTPS?</td>
+            <td><code>login-exampl3.com</code> vs <code>login.example.com</code></td>
+          </tr>
+          <tr>
+            <td><strong>SSL Certificate</strong></td>
+            <td>Is there a padlock? Is the certificate valid?</td>
+            <td>Missing padlock or "Not Secure" warning</td>
+          </tr>
+          <tr>
+            <td><strong>Visual Quality</strong></td>
+            <td>Are logos blurry? Is the layout slightly off?</td>
+            <td>Low-res logo, misaligned elements</td>
+          </tr>
+          <tr>
+            <td><strong>Footer Links</strong></td>
+            <td>Do the "Privacy Policy" / "Terms" links work?</td>
+            <td>Broken links or links to unrelated sites</td>
+          </tr>
+          <tr>
+            <td><strong>Form Behavior</strong></td>
+            <td>Does the form submit to the expected domain?</td>
+            <td>Form action URL doesn't match the service</td>
+          </tr>
+          <tr>
+            <td><strong>Browser Warnings</strong></td>
+            <td>Is the browser showing any security warnings?</td>
+            <td>Red address bar, phishing warnings</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>What a Training Awareness Page Should Include</h2>
+      <p>When a user clicks a simulated phishing link in a training exercise, they should land on a page with these elements:</p>
+
+      <div class="info-box info fade-in">
+        <div class="info-title">📋 Required Elements</div>
+        <p><strong>1.</strong> A clear "TRAINING SIMULATION" header so the user immediately knows this is an exercise.<br>
+        <strong>2.</strong> An explanation of what just happened ("You clicked a simulated phishing link").<br>
+        <strong>3.</strong> The specific red flags they should have noticed in the email/link.<br>
+        <strong>4.</strong> Actionable tips for identifying phishing in the future.<br>
+        <strong>5.</strong> A supportive, non-punitive tone.<br>
+        <strong>6.</strong> A link to report the simulated phishing email.<br>
+        <strong>7.</strong> Contact information for the security team.</p>
+      </div>
+
+      <h2>Security Warnings to Include</h2>
+      <ul class="checklist fade-in">
+        <li>Large, prominent "THIS IS A TRAINING EXERCISE" banner</li>
+        <li>"No credentials were captured or stored" assurance</li>
+        <li>Explanation of the simulation program and its goals</li>
+        <li>Link to the organization's actual security policy</li>
+        <li>Contact details for the security awareness team</li>
+        <li>"This interaction has been logged for training metrics only"</li>
+        <li>Opt-out information if applicable to the training program</li>
+      </ul>
+
+      <div class="info-box success fade-in">
+        <div class="info-title">✅ Key Principle</div>
+        <p>A well-designed training awareness page turns a "failure moment" into a <strong>powerful learning opportunity</strong>. The user walks away more informed, not embarrassed.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"><p>🛡️ SecureBait — For authorized academic and educational purposes only.</p></footer>
+  <script src="../js/app.js"></script>
+</body>
+</html>

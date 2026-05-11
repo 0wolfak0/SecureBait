@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Phishing Prevention & Awareness Guide — Practical strategies for identifying and defending against phishing.">
+  <title>Prevention Guide — SecureBait</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-brand"><span class="shield">🛡️</span><span>SecureBait</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="lab-setup.html">Lab Setup</a></li>
+      <li><a href="simulation.html">Simulation</a></li>
+      <li><a href="templates.html">Templates</a></li>
+      <li><a href="login-concepts.html">Login Pages</a></li>
+      <li><a href="metrics.html">Metrics</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="prevention.html" class="active">Prevention</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="ethical-banner"><span class="icon">🛡️</span> DEFENSE GUIDE — Practical strategies for identifying and defending against phishing attacks.</div>
+
+  <main class="main-content">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <div class="hero-badge fade-in">🛡️ Module 07</div>
+      <h1 class="fade-in fade-in-d1">Prevention & <span class="gradient-text">Awareness Guide</span></h1>
+      <p class="fade-in fade-in-d2">A comprehensive, practical guide to identifying, preventing, and reporting phishing attacks.</p>
+    </section>
+
+    <div class="page-content">
+
+      <!-- How to Identify -->
+      <h2>How to Identify Phishing Emails</h2>
+      <p>Phishing emails exploit human psychology — urgency, fear, trust, and curiosity. Learning to recognize these patterns is your strongest defense.</p>
+
+      <h3>The S.T.O.P. Method</h3>
+      <div class="info-box success fade-in">
+        <div class="info-title">✅ Before Acting on Any Email, S.T.O.P.</div>
+        <p>
+          <strong>S — Sender:</strong> Do you recognize the sender? Does the email address match the claimed organization?<br>
+          <strong>T — Tone:</strong> Is the email creating urgency, fear, or pressure to act immediately?<br>
+          <strong>O — Objective:</strong> What is the email asking you to do? Click a link? Download a file? Share credentials?<br>
+          <strong>P — Proof:</strong> Can you verify this request through an independent channel (phone call, official website)?
+        </p>
+      </div>
+
+      <!-- Red Flags -->
+      <h2>Common Red Flags</h2>
+      <div class="cards-grid fade-in" style="max-width:100%;">
+        <div class="card" style="cursor:default;">
+          <div class="card-icon red">📧</div>
+          <h3>Suspicious Sender Address</h3>
+          <p>The display name says "IT Support" but the actual email is <code>support@random-domain.xyz</code>. Always check the full email address, not just the display name.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon amber">⏰</div>
+          <h3>Urgency & Pressure</h3>
+          <p>"Your account will be locked in 2 hours!" — Legitimate organizations rarely impose extreme urgency for routine actions like password resets.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon purple">🔗</div>
+          <h3>Suspicious Links</h3>
+          <p>Hover over links before clicking. The displayed text may say "login.example.com" but the actual URL points to <code>login-examp1e.phish.xyz</code>.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon blue">📎</div>
+          <h3>Unexpected Attachments</h3>
+          <p>Unsolicited attachments (especially .exe, .zip, .docm files) are a major red flag. Verify with the sender before opening any attachment.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon red">✍️</div>
+          <h3>Grammar & Spelling Errors</h3>
+          <p>While not always present (AI has improved phishing quality), noticeable errors in professional communications are a warning sign.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon cyan">👤</div>
+          <h3>Generic Greetings</h3>
+          <p>"Dear Customer" or "Dear User" instead of your actual name. Legitimate services that have your account usually address you by name.</p>
+        </div>
+      </div>
+
+      <!-- Advanced Indicators -->
+      <h2>Advanced Phishing Indicators</h2>
+      <table class="report-table fade-in">
+        <thead><tr><th>Indicator</th><th>How to Check</th><th>What It Reveals</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Email Headers</strong></td>
+            <td>View "Show Original" or "Message Source" in your email client</td>
+            <td>SPF/DKIM/DMARC failures reveal spoofed senders</td>
+          </tr>
+          <tr>
+            <td><strong>URL Shorteners</strong></td>
+            <td>Use URL expander tools to reveal the full destination</td>
+            <td>Shortened URLs hide the true destination domain</td>
+          </tr>
+          <tr>
+            <td><strong>Homograph Attacks</strong></td>
+            <td>Look carefully at domain names for character substitution</td>
+            <td>e.g., using Cyrillic "а" instead of Latin "a" in domains</td>
+          </tr>
+          <tr>
+            <td><strong>Subdomain Tricks</strong></td>
+            <td>Check the actual domain (rightmost before TLD)</td>
+            <td><code>login.example.com.evil.xyz</code> — the real domain is <code>evil.xyz</code></td>
+          </tr>
+          <tr>
+            <td><strong>QR Code Phishing</strong></td>
+            <td>Use a QR scanner that previews URLs before opening</td>
+            <td>QR codes in emails can direct to phishing sites</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Best Practices for Users -->
+      <h2>Best Practices for Users</h2>
+      <ul class="checklist fade-in">
+        <li>Never click links in unexpected emails — navigate to the site directly by typing the URL</li>
+        <li>Enable multi-factor authentication (MFA) on all accounts</li>
+        <li>Use a password manager to avoid entering credentials on unfamiliar sites</li>
+        <li>Verify requests through a separate channel (call, in-person, official app)</li>
+        <li>Keep your software and browser updated for the latest security patches</li>
+        <li>Report suspicious emails using your organization's reporting mechanism</li>
+        <li>Never share passwords, MFA codes, or personal information via email</li>
+        <li>Be extra cautious with emails received on mobile devices (limited URL visibility)</li>
+        <li>Don't trust caller ID — voice phishing (vishing) can spoof phone numbers too</li>
+        <li>When in doubt, ask your IT/security team — it's always better to ask</li>
+      </ul>
+
+      <!-- Best Practices for Organizations -->
+      <h2>Best Practices for Organizations</h2>
+
+      <h3>Technical Controls</h3>
+      <ul>
+        <li><strong>Email Authentication:</strong> Implement SPF, DKIM, and DMARC to prevent email spoofing</li>
+        <li><strong>Email Filtering:</strong> Deploy advanced email security gateways with sandboxing</li>
+        <li><strong>URL Filtering:</strong> Block known malicious domains at the DNS/proxy level</li>
+        <li><strong>MFA Enforcement:</strong> Require MFA for all user accounts, especially privileged ones</li>
+        <li><strong>Browser Isolation:</strong> Use remote browser isolation for risky web browsing</li>
+        <li><strong>Endpoint Protection:</strong> Deploy EDR solutions for real-time threat detection</li>
+      </ul>
+
+      <h3>Process Controls</h3>
+      <ul>
+        <li><strong>Phishing Report Button:</strong> Install a one-click reporting plugin in all email clients</li>
+        <li><strong>Verification Procedures:</strong> Establish out-of-band verification for financial requests</li>
+        <li><strong>Incident Response Plan:</strong> Define clear steps for when a phishing email is reported or clicked</li>
+        <li><strong>Access Reviews:</strong> Regularly review user access and privileges</li>
+      </ul>
+
+      <!-- Reporting Procedures -->
+      <h2>Reporting Procedures</h2>
+      <div class="info-box info fade-in">
+        <div class="info-title">📋 How to Report a Suspected Phishing Email</div>
+        <p>
+          <strong>Step 1:</strong> Do NOT click any links, download attachments, or reply to the email.<br>
+          <strong>Step 2:</strong> Use your email client's "Report Phishing" button (if available).<br>
+          <strong>Step 3:</strong> Forward the email as an attachment to your security team (e.g., <code>security@yourorg.example</code>).<br>
+          <strong>Step 4:</strong> If you already clicked a link or entered credentials, contact IT security immediately and change your passwords.<br>
+          <strong>Step 5:</strong> Document what happened — when you received the email, what you did, and any details you noticed.
+        </p>
+      </div>
+
+      <!-- Security Culture -->
+      <h2>Building a Security Culture</h2>
+
+      <div class="cards-grid fade-in" style="max-width:100%;">
+        <div class="card" style="cursor:default;">
+          <div class="card-icon cyan">🏆</div>
+          <h3>Reward Reporting</h3>
+          <p>Recognize and reward users who report phishing attempts. Create a "Phishing Champions" program to celebrate security-aware behavior.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon blue">🚫</div>
+          <h3>No Blame Culture</h3>
+          <p>Never punish users for falling for simulations. A blame-free environment encourages honest reporting and faster incident response.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon purple">📅</div>
+          <h3>Regular Training</h3>
+          <p>Conduct quarterly simulations and annual refresher training. Consistent exposure builds lasting security habits and muscle memory.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon amber">👥</div>
+          <h3>Leadership Buy-In</h3>
+          <p>Security culture starts at the top. When leadership participates in training and champions security, the entire organization follows.</p>
+        </div>
+      </div>
+
+      <h3>Cultural Improvement Tips</h3>
+      <ul>
+        <li><strong>Make it personal:</strong> Show employees how phishing affects them personally (identity theft, financial loss), not just the company</li>
+        <li><strong>Gamify awareness:</strong> Use leaderboards, badges, and team competitions to make security training engaging</li>
+        <li><strong>Share real examples:</strong> Regularly share anonymized examples of phishing attempts targeting your industry</li>
+        <li><strong>Micro-learning:</strong> Deliver short, frequent training bursts (2-3 minutes) rather than long annual sessions</li>
+        <li><strong>Measure and communicate:</strong> Share improvement metrics with the organization to demonstrate progress</li>
+        <li><strong>Include onboarding:</strong> Make security awareness part of new employee orientation from day one</li>
+      </ul>
+
+      <div class="info-box tip fade-in">
+        <div class="info-title">💡 Remember</div>
+        <p>Security is everyone's responsibility. The most sophisticated technical defenses can be bypassed by a single click. <strong>An aware and vigilant workforce is the most effective defense against phishing.</strong></p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer"><p>🛡️ SecureBait — For authorized academic and educational purposes only.</p></footer>
+  <script src="../js/app.js"></script>
+</body>
+</html>

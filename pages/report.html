@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Analysis Report — Structured framework for phishing simulation reporting and analysis.">
+  <title>Analysis Report — SecureBait</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-brand"><span class="shield">🛡️</span><span>SecureBait</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="lab-setup.html">Lab Setup</a></li>
+      <li><a href="simulation.html">Simulation</a></li>
+      <li><a href="templates.html">Templates</a></li>
+      <li><a href="login-concepts.html">Login Pages</a></li>
+      <li><a href="metrics.html">Metrics</a></li>
+      <li><a href="report.html" class="active">Report</a></li>
+      <li><a href="prevention.html">Prevention</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="ethical-banner"><span class="icon">⚠️</span> EDUCATIONAL USE ONLY — Report structure is for academic training documentation.</div>
+
+  <main class="main-content">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <div class="hero-badge fade-in">📋 Module 06</div>
+      <h1 class="fade-in fade-in-d1">Analysis <span class="gradient-text">Report</span></h1>
+      <p class="fade-in fade-in-d2">Structured framework for documenting simulation results and security gap analysis.</p>
+    </section>
+
+    <div class="page-content">
+
+      <!-- Report Header -->
+      <div class="arch-diagram fade-in" style="text-align:center;">
+        <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; color:var(--accent-cyan); margin-bottom:0.5rem;">Phishing Awareness Training</div>
+        <div style="font-size:1.8rem; font-weight:900; margin-bottom:0.25rem;">Simulation Analysis Report</div>
+        <div style="color:var(--text-muted); font-size:0.9rem;">SecureBait Training Platform — Academic Exercise</div>
+        <div style="margin-top:1rem; display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; font-size:0.85rem; color:var(--text-secondary);">
+          <span>📅 Date: [Exercise Date]</span>
+          <span>👤 Author: [Student Name]</span>
+          <span>🏫 Institution: [University Name]</span>
+        </div>
+      </div>
+
+      <!-- Section 1: Objective -->
+      <h2>1. Objective</h2>
+      <div class="info-box info fade-in">
+        <div class="info-title">📌 Report Section: Objective</div>
+        <p>State the purpose of the phishing simulation exercise clearly and concisely.</p>
+      </div>
+      <p><strong>Sample Objective Statement:</strong></p>
+      <div class="code-block fade-in">
+        <span class="comment">// Example objective for an academic phishing simulation report</span><br><br>
+        <span class="key">Purpose:</span> <span class="val">To evaluate the phishing awareness level of simulated</span><br>
+        <span class="val">users within a controlled lab environment and measure the</span><br>
+        <span class="val">effectiveness of security awareness training interventions.</span><br><br>
+        <span class="key">Scope:</span> <span class="val">3 simulation campaigns conducted over a 6-month period</span><br>
+        <span class="key">Participants:</span> <span class="val">50 simulated user accounts (dummy data only)</span><br>
+        <span class="key">Environment:</span> <span class="val">Fully isolated lab network with no internet access</span><br>
+        <span class="key">Authorization:</span> <span class="val">Approved by [Academic Supervisor] on [Date]</span>
+      </div>
+
+      <!-- Section 2: Methodology -->
+      <h2>2. Methodology</h2>
+      <p>Describe the high-level approach without providing step-by-step attack instructions:</p>
+      <table class="report-table fade-in">
+        <thead><tr><th>Phase</th><th>Description</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. Setup</strong></td><td>Configured isolated lab environment with GoPhish, sandboxed mail server, and 50 dummy user accounts</td><td>Week 1-2</td></tr>
+          <tr><td><strong>2. Baseline</strong></td><td>Conducted initial phishing simulation (password reset scenario) to establish baseline awareness metrics</td><td>Week 3</td></tr>
+          <tr><td><strong>3. Training</strong></td><td>Delivered awareness training covering phishing indicators, reporting procedures, and defense strategies</td><td>Week 4-6</td></tr>
+          <tr><td><strong>4. Post-Training</strong></td><td>Conducted second simulation (shared document scenario) to measure training effectiveness</td><td>Week 8</td></tr>
+          <tr><td><strong>5. Advanced</strong></td><td>Conducted third simulation (BEC/authority scenario) with higher sophistication</td><td>Week 12</td></tr>
+          <tr><td><strong>6. Analysis</strong></td><td>Compiled metrics, analyzed behavioral patterns, and prepared findings</td><td>Week 13-14</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Section 3: Results Summary -->
+      <h2>3. Results Summary</h2>
+      <p>Present aggregate metrics from each campaign phase:</p>
+
+      <div class="metrics-grid fade-in">
+        <div class="metric-card">
+          <div class="metric-value">75%</div>
+          <div class="metric-label">CTR Reduction</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">7.7×</div>
+          <div class="metric-label">Reporting Increase</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">89%</div>
+          <div class="metric-label">Training Completion</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">3 min</div>
+          <div class="metric-label">Avg Report Time</div>
+        </div>
+      </div>
+
+      <table class="report-table fade-in">
+        <thead><tr><th>Metric</th><th>Campaign 1 (Baseline)</th><th>Campaign 2</th><th>Campaign 3</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Email Open Rate</td><td>82%</td><td>75%</td><td>68%</td><td>📉 -17%</td></tr>
+          <tr><td>Click-Through Rate</td><td>45%</td><td>22%</td><td>11%</td><td>📉 -75%</td></tr>
+          <tr><td>Credential Submission</td><td>28%</td><td>10%</td><td>3%</td><td>📉 -89%</td></tr>
+          <tr><td>Reporting Rate</td><td>8%</td><td>35%</td><td>62%</td><td>📈 +675%</td></tr>
+          <tr><td>Avg Time to Report</td><td>47 min</td><td>12 min</td><td>3 min</td><td>📉 -93%</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Section 4: User Behavior Insights -->
+      <h2>4. User Behavior Insights</h2>
+
+      <h3>Key Findings</h3>
+      <ul>
+        <li><strong>Urgency is the most effective trigger:</strong> Password expiry scenarios had the highest click-through rate (45%) compared to document sharing (32%) and BEC (18%)</li>
+        <li><strong>Training has measurable impact:</strong> The 75% reduction in CTR between Campaign 1 and 3 demonstrates that structured awareness training significantly improves user behavior</li>
+        <li><strong>Reporting behavior is trainable:</strong> The 675% increase in reporting rate shows that users can be effectively taught to report suspicious emails</li>
+        <li><strong>Repeated exposure builds resilience:</strong> Each subsequent campaign showed improvement, suggesting that regular simulation exercises reinforce learning</li>
+        <li><strong>Time-of-day matters:</strong> Emails sent at the start of the workday (9-10 AM) had higher click rates than those sent mid-afternoon</li>
+      </ul>
+
+      <h3>Behavioral Patterns Observed</h3>
+      <div class="cards-grid fade-in" style="max-width:100%;">
+        <div class="card" style="cursor:default;">
+          <div class="card-icon red">⚡</div>
+          <h3>Impulsive Clickers</h3>
+          <p>~15% of users clicked within 30 seconds of opening the email, indicating reflexive behavior without analysis. This group benefited most from training.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon amber">🤔</div>
+          <h3>Cautious Reviewers</h3>
+          <p>~40% of users who opened the email did not click. Post-survey data showed they noticed at least one red flag before deciding not to interact.</p>
+        </div>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon cyan">🛡️</div>
+          <h3>Active Reporters</h3>
+          <p>The reporting cohort grew from 8% to 62% across campaigns. Many reporters also helped warn colleagues, creating a positive peer-influence effect.</p>
+        </div>
+      </div>
+
+      <!-- Section 5: Security Gaps -->
+      <h2>5. Security Gaps Identified</h2>
+      <table class="report-table fade-in">
+        <thead><tr><th>Gap</th><th>Risk Level</th><th>Recommendation</th></tr></thead>
+        <tbody>
+          <tr><td>No phishing report button in email client</td><td>🔴 High</td><td>Deploy a one-click reporting plugin in all email clients</td></tr>
+          <tr><td>Users unable to verify sender authenticity</td><td>🔴 High</td><td>Implement DMARC/DKIM/SPF and train users on checking headers</td></tr>
+          <tr><td>No multi-factor authentication on critical accounts</td><td>🔴 High</td><td>Mandate MFA for all users to reduce credential theft impact</td></tr>
+          <tr><td>Inconsistent security awareness training</td><td>🟡 Medium</td><td>Establish quarterly simulation cadence with mandatory training</td></tr>
+          <tr><td>No URL filtering or sandboxing at network level</td><td>🟡 Medium</td><td>Deploy DNS-based URL filtering and browser isolation</td></tr>
+          <tr><td>Low awareness of BEC/authority-based attacks</td><td>🟡 Medium</td><td>Add BEC-specific training module with verification procedures</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Section 6: Conclusion Template -->
+      <h2>6. Conclusion & Recommendations</h2>
+      <div class="info-box success fade-in">
+        <div class="info-title">✅ Report Conclusion Template</div>
+        <p>
+          <strong>Summary:</strong> The phishing simulation exercise demonstrated that structured security awareness training significantly reduces susceptibility to phishing attacks. Key metrics showed a 75% reduction in click-through rates and a 675% increase in reporting rates over three campaigns.<br><br>
+          <strong>Top 3 Recommendations:</strong><br>
+          1. Implement regular (quarterly) phishing simulation exercises<br>
+          2. Deploy technical controls (MFA, DMARC, URL filtering) to complement training<br>
+          3. Foster a positive security culture where reporting is encouraged and rewarded
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"><p>🛡️ SecureBait — For authorized academic and educational purposes only.</p></footer>
+  <script src="../js/app.js"></script>
+</body>
+</html>

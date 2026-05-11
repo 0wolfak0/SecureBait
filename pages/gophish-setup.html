@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GoPhish Campaign Setup — Step-by-step guide for phishing simulation using GoPhish.">
+  <title>GoPhish Campaign Setup — SecureBait</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-brand"><span class="shield">🛡️</span><span>SecureBait</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="lab-setup.html">Lab Setup</a></li>
+      <li><a href="simulation.html">Simulation</a></li>
+      <li><a href="templates.html">Templates</a></li>
+      <li><a href="login-concepts.html">Login Pages</a></li>
+      <li><a href="metrics.html">Metrics</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="prevention.html">Prevention</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="ethical-banner"><span class="icon">⚠️</span> EDUCATIONAL USE ONLY — GoPhish setup for authorized academic lab environments only.</div>
+
+  <main class="main-content">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <div class="hero-badge fade-in">🎯 Campaign Guide</div>
+      <h1 class="fade-in fade-in-d1">GoPhish <span class="gradient-text">Campaign Setup</span></h1>
+      <p class="fade-in fade-in-d2">Step-by-step guide for running a phishing simulation campaign in an isolated lab.</p>
+    </section>
+
+    <div class="page-content">
+      <div class="info-box warning fade-in">
+        <div class="info-title">⚠️ Lab Environment Only</div>
+        <p>This guide is for <strong>isolated lab environments only</strong>. Never run GoPhish against real users, real domains, or production email systems. Ensure you have written authorization before proceeding.</p>
+      </div>
+
+      <h2>1. GoPhish Installation (Kali Linux)</h2>
+      <div class="code-block fade-in">
+        <span class="comment"># Download GoPhish (in isolated lab VM)</span><br>
+        <span class="key">$</span> <span class="val">wget https://github.com/gophish/gophish/releases/download/v0.12.1/gophish-v0.12.1-linux-64bit.zip</span><br><br>
+        <span class="comment"># Extract</span><br>
+        <span class="key">$</span> <span class="val">unzip gophish-v0.12.1-linux-64bit.zip -d /opt/gophish</span><br><br>
+        <span class="comment"># Make executable</span><br>
+        <span class="key">$</span> <span class="val">chmod +x /opt/gophish/gophish</span><br><br>
+        <span class="comment"># Start GoPhish</span><br>
+        <span class="key">$</span> <span class="val">cd /opt/gophish && ./gophish</span><br><br>
+        <span class="comment"># Admin panel: https://localhost:3333</span><br>
+        <span class="comment"># Default creds: admin / (check terminal output for temp password)</span>
+      </div>
+
+      <h2>2. Configure Sending Profile</h2>
+      <p>The sending profile tells GoPhish how to send emails. In your isolated lab, configure it to use the local sandboxed mail server.</p>
+      <table class="report-table fade-in">
+        <thead><tr><th>Setting</th><th>Value (Lab)</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Name</td><td>Lab SMTP</td><td>Descriptive name</td></tr>
+          <tr><td>SMTP From</td><td>it-security@training.local</td><td>Fictional sender address</td></tr>
+          <tr><td>Host</td><td>192.168.56.10:25</td><td>Lab mail server IP</td></tr>
+          <tr><td>Username</td><td>(leave blank)</td><td>No auth for local SMTP</td></tr>
+          <tr><td>Ignore Certificate Errors</td><td>✅ Checked</td><td>Lab environment only</td></tr>
+        </tbody>
+      </table>
+
+      <h2>3. Create Email Template</h2>
+      <p>GoPhish templates support HTML with tracking variables:</p>
+      <div class="code-block fade-in">
+        <span class="comment">&lt;!-- GoPhish Email Template Variables --&gt;</span><br>
+        <span class="key">{{.FirstName}}</span> <span class="comment">— Recipient's first name</span><br>
+        <span class="key">{{.LastName}}</span> <span class="comment">— Recipient's last name</span><br>
+        <span class="key">{{.Email}}</span> <span class="comment">— Recipient's email address</span><br>
+        <span class="key">{{.URL}}</span> <span class="comment">— Unique tracking URL (auto-generated)</span><br>
+        <span class="key">{{.From}}</span> <span class="comment">— Sender address</span><br>
+        <span class="key">{{.TrackingURL}}</span> <span class="comment">— Invisible tracking pixel</span><br><br>
+        <span class="comment">&lt;!-- Example: Password Reset Template --&gt;</span><br>
+        Subject: <span class="val">⚠️ URGENT: Your Password Expires in 24 Hours</span><br>
+        Body: Dear <span class="key">{{.FirstName}}</span>,<br>
+        Your password expires soon. Click <span class="key">{{.URL}}</span> to reset.<br>
+        <span class="key">{{.TrackingURL}}</span> <span class="comment">&lt;!-- invisible open tracking --&gt;</span>
+      </div>
+
+      <h2>4. Create Landing Page</h2>
+      <p>The landing page is what users see after clicking the link. For training, this should be the <strong>awareness page</strong> — not a credential harvester.</p>
+      <div class="info-box success fade-in">
+        <div class="info-title">✅ Training Best Practice</div>
+        <p>Configure GoPhish to redirect users to an <strong>awareness training page</strong> after they click. GoPhish supports importing existing HTML pages or using its built-in editor. Use the <code>Redirect to</code> field to send users to your training page after interaction.</p>
+      </div>
+      <p>GoPhish landing page options:</p>
+      <ul>
+        <li><strong>Import Site:</strong> Import HTML from a URL (your training awareness page)</li>
+        <li><strong>Capture Submitted Data:</strong> Enable to track who submitted the form (for metrics only)</li>
+        <li><strong>Capture Passwords:</strong> ❌ <strong>Disable this</strong> — not needed for training</li>
+        <li><strong>Redirect to:</strong> Set to your awareness training page URL</li>
+      </ul>
+
+      <h2>5. Set Up User Group</h2>
+      <p>Create a group of <strong>dummy test accounts</strong> in GoPhish:</p>
+      <div class="code-block fade-in">
+        <span class="comment"># Example CSV format for dummy users</span><br>
+        <span class="key">First Name</span>,<span class="key">Last Name</span>,<span class="key">Email</span>,<span class="key">Position</span><br>
+        <span class="val">Alice</span>,<span class="val">Test</span>,<span class="val">alice@training.local</span>,<span class="val">Analyst</span><br>
+        <span class="val">Bob</span>,<span class="val">Test</span>,<span class="val">bob@training.local</span>,<span class="val">Manager</span><br>
+        <span class="val">Carol</span>,<span class="val">Test</span>,<span class="val">carol@training.local</span>,<span class="val">Developer</span><br>
+        <span class="val">Dave</span>,<span class="val">Test</span>,<span class="val">dave@training.local</span>,<span class="val">HR Staff</span><br>
+        <span class="comment"># ... (all fictional accounts on sandboxed mail server)</span>
+      </div>
+
+      <h2>6. Launch Campaign</h2>
+      <p>In GoPhish, create a new campaign combining:</p>
+      <table class="report-table fade-in">
+        <thead><tr><th>Campaign Setting</th><th>Configuration</th></tr></thead>
+        <tbody>
+          <tr><td>Name</td><td>Campaign 1 — Password Reset Baseline</td></tr>
+          <tr><td>Email Template</td><td>Password Expiry Alert (from Step 3)</td></tr>
+          <tr><td>Landing Page</td><td>Training Awareness Page (from Step 4)</td></tr>
+          <tr><td>Sending Profile</td><td>Lab SMTP (from Step 2)</td></tr>
+          <tr><td>Groups</td><td>Lab Test Users (from Step 5)</td></tr>
+          <tr><td>URL</td><td>http://192.168.56.20 (lab web server IP)</td></tr>
+          <tr><td>Launch Date</td><td>Schedule or launch immediately</td></tr>
+        </tbody>
+      </table>
+
+      <h2>7. Monitor & Track Results</h2>
+      <p>GoPhish provides a real-time dashboard tracking:</p>
+      <div class="metrics-grid fade-in">
+        <div class="metric-card">
+          <div class="metric-value">📧</div>
+          <div class="metric-label">Emails Sent</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">👁️</div>
+          <div class="metric-label">Emails Opened</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">🖱️</div>
+          <div class="metric-label">Links Clicked</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">📝</div>
+          <div class="metric-label">Data Submitted</div>
+        </div>
+      </div>
+      <p>GoPhish tracks each event with timestamps, allowing you to analyze response patterns, time-to-click, and which users interacted with the simulation.</p>
+
+      <h2>8. Export Data for Analysis</h2>
+      <div class="code-block fade-in">
+        <span class="comment"># GoPhish API — Export campaign results</span><br>
+        <span class="key">GET</span> <span class="val">/api/campaigns/{id}/results?api_key=YOUR_API_KEY</span><br><br>
+        <span class="comment"># Or use the GoPhish dashboard:</span><br>
+        <span class="comment"># Campaigns → Select Campaign → Export CSV</span><br><br>
+        <span class="comment"># CSV columns exported:</span><br>
+        <span class="val">email, first_name, last_name, status, reported, send_date, modified_date</span><br><br>
+        <span class="comment"># Status values:</span><br>
+        <span class="key">Email Sent</span> → <span class="key">Email Opened</span> → <span class="key">Clicked Link</span> → <span class="key">Submitted Data</span>
+      </div>
+
+      <div class="info-box tip fade-in">
+        <div class="info-title">💡 SET Toolkit Alternative</div>
+        <p>The Social Engineering Toolkit (SET) on Kali Linux can also be used for phishing simulations. Launch with <code>sudo setoolkit</code>, choose <strong>1) Social-Engineering Attacks → 2) Website Attack Vectors → 3) Credential Harvester</strong>. However, GoPhish is preferred for campaigns because it provides built-in tracking, reporting, and multi-user campaign management.</p>
+      </div>
+
+      <h2>Campaign Workflow Summary</h2>
+      <div class="arch-diagram fade-in">
+        <div class="arch-row">
+          <div class="arch-box blue">1️⃣ Install GoPhish<small>On Kali Linux lab VM</small></div>
+          <div class="arch-box purple">2️⃣ Configure SMTP<small>Sandboxed mail server</small></div>
+        </div>
+        <div class="arch-connector">↓</div>
+        <div class="arch-row">
+          <div class="arch-box amber">3️⃣ Create Template<small>Phishing email with variables</small></div>
+          <div class="arch-box red">4️⃣ Set Landing Page<small>Awareness training page</small></div>
+        </div>
+        <div class="arch-connector">↓</div>
+        <div class="arch-row">
+          <div class="arch-box cyan">5️⃣ Add Users<small>Dummy accounts only</small></div>
+          <div class="arch-box blue">6️⃣ Launch Campaign<small>Send simulation emails</small></div>
+        </div>
+        <div class="arch-connector">↓</div>
+        <div class="arch-row">
+          <div class="arch-box purple">7️⃣ Monitor Results<small>Track opens, clicks, submits</small></div>
+          <div class="arch-box cyan">8️⃣ Export & Analyze<small>Generate report</small></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"><p>🛡️ SecureBait — For authorized academic and educational purposes only.</p></footer>
+  <script src="../js/app.js"></script>
+</body>
+</html>

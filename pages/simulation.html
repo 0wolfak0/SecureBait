@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Phishing Simulation Design — Training-only phishing scenarios for ethical awareness testing.">
+  <title>Simulation Design — SecureBait</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-brand"><span class="shield">🛡️</span><span>SecureBait</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="lab-setup.html">Lab Setup</a></li>
+      <li><a href="simulation.html" class="active">Simulation</a></li>
+      <li><a href="templates.html">Templates</a></li>
+      <li><a href="login-concepts.html">Login Pages</a></li>
+      <li><a href="metrics.html">Metrics</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="prevention.html">Prevention</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="ethical-banner"><span class="icon">⚠️</span> EDUCATIONAL USE ONLY — All scenarios are for training simulation in isolated environments.</div>
+
+  <main class="main-content">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <div class="hero-badge fade-in">🎯 Module 02</div>
+      <h1 class="fade-in fade-in-d1">Simulation <span class="gradient-text">Design</span></h1>
+      <p class="fade-in fade-in-d2">Training-only phishing scenarios that demonstrate real-world attack patterns safely.</p>
+    </section>
+
+    <div class="page-content">
+      <div class="info-box info fade-in">
+        <div class="info-title">ℹ️ Purpose</div>
+        <p>These scenarios are designed to <strong>educate users on recognizing phishing</strong> — not to trick them. Every simulation includes post-interaction training and immediate feedback.</p>
+      </div>
+
+      <h2>Scenario 1: Fake Password Reset Alert</h2>
+
+      <h3>Threat Model</h3>
+      <p>An attacker sends an email impersonating an IT department, claiming the user's password is expiring. The email creates <strong>urgency</strong> to pressure the user into clicking a malicious link and entering credentials on a fake login page.</p>
+
+      <h3>What the Simulation Demonstrates</h3>
+      <ul>
+        <li><strong>Social Engineering Tactic:</strong> Creating urgency ("Your password expires in 24 hours")</li>
+        <li><strong>Spoofed Sender:</strong> Email appears to come from <code>it-security@training-example.local</code></li>
+        <li><strong>Deceptive Link:</strong> The "Reset Password" button points to a training awareness page, not a real login</li>
+        <li><strong>Visual Mimicry:</strong> The email uses corporate-looking branding to appear legitimate</li>
+      </ul>
+
+      <h3>User Interaction Flow</h3>
+      <div class="arch-diagram fade-in">
+        <div class="arch-row">
+          <div class="arch-box amber">📬 User receives<br>simulation email<small>In sandboxed mailbox</small></div>
+        </div>
+        <div class="arch-connector">↓</div>
+        <div class="arch-row">
+          <div class="arch-box blue">🤔 Decision Point<small>Click link or report?</small></div>
+        </div>
+        <div class="arch-connector">↙ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+        <div class="arch-row">
+          <div class="arch-box red">❌ Clicks Link<small>Redirected to awareness page</small></div>
+          <div class="arch-box cyan">✅ Reports Email<small>Flagged via reporting button</small></div>
+        </div>
+        <div class="arch-connector">↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓</div>
+        <div class="arch-row">
+          <div class="arch-box purple">📖 Training Module<small>Immediate educational feedback</small></div>
+        </div>
+      </div>
+
+      <h3>Learning Outcomes</h3>
+      <ul class="checklist fade-in">
+        <li>Recognize urgency-based social engineering tactics</li>
+        <li>Verify sender addresses before taking action</li>
+        <li>Hover over links to check actual destination URLs</li>
+        <li>Use official channels to verify password reset requests</li>
+        <li>Report suspicious emails using the organization's reporting mechanism</li>
+      </ul>
+
+      <h2>Scenario 2: Fake Shared Document Notification</h2>
+
+      <h3>Threat Model</h3>
+      <p>An attacker sends an email mimicking a file-sharing service notification (e.g., "John shared a document with you"). The goal is to trick the user into clicking a link and entering their credentials on a fake login page.</p>
+
+      <h3>What the Simulation Demonstrates</h3>
+      <ul>
+        <li><strong>Brand Impersonation:</strong> Email mimics the look of legitimate file-sharing notifications</li>
+        <li><strong>Trust Exploitation:</strong> Uses a colleague's name to build trust</li>
+        <li><strong>Credential Harvesting Pattern:</strong> Redirects to a fake login that mimics a popular service</li>
+        <li><strong>URL Mismatch:</strong> Display URL differs from actual destination</li>
+      </ul>
+
+      <h3>Key Indicators for Users to Spot</h3>
+      <table class="report-table fade-in">
+        <thead><tr><th>Indicator</th><th>What to Look For</th><th>Red Flag Level</th></tr></thead>
+        <tbody>
+          <tr><td>Sender Address</td><td>Domain doesn't match the real service</td><td>🔴 High</td></tr>
+          <tr><td>Link URL</td><td>Hovering reveals unfamiliar domain</td><td>🔴 High</td></tr>
+          <tr><td>Greeting</td><td>Generic ("Dear User") instead of personalized</td><td>🟡 Medium</td></tr>
+          <tr><td>Urgency Language</td><td>"View immediately" or "expires soon"</td><td>🟡 Medium</td></tr>
+          <tr><td>Visual Quality</td><td>Slightly off branding, low-res logos</td><td>🟢 Low</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Scenario 3: CEO/Authority Impersonation (BEC)</h2>
+
+      <h3>Threat Model</h3>
+      <p>Business Email Compromise (BEC) — an attacker impersonates a senior executive to request an urgent action, such as processing a payment or sharing sensitive data.</p>
+
+      <h3>What the Simulation Demonstrates</h3>
+      <ul>
+        <li><strong>Authority Pressure:</strong> The email claims to be from the CEO/Director</li>
+        <li><strong>Urgency + Secrecy:</strong> "Handle this privately and urgently"</li>
+        <li><strong>Process Bypass:</strong> Asks the user to skip normal procedures</li>
+        <li><strong>No Attachments/Links:</strong> BEC often relies purely on social engineering text</li>
+      </ul>
+
+      <div class="info-box tip fade-in">
+        <div class="info-title">💡 Training Tip</div>
+        <p>BEC attacks are among the most costly forms of phishing. They often don't contain links or malware — just persuasive text. Train users to <strong>verify requests through a separate communication channel</strong> (e.g., call the executive directly).</p>
+      </div>
+
+      <h2>Post-Simulation Training Framework</h2>
+      <p>Every simulation scenario should include immediate educational feedback:</p>
+      <ol>
+        <li><strong>Awareness Page:</strong> Users who click are shown an educational page explaining what happened</li>
+        <li><strong>Micro-Training Module:</strong> A 2-3 minute interactive lesson on the specific attack type</li>
+        <li><strong>Quiz/Knowledge Check:</strong> 3-5 questions to reinforce learning</li>
+        <li><strong>Resource Links:</strong> Additional reading and official reporting procedures</li>
+        <li><strong>No Shaming:</strong> The tone must be supportive and educational, never punitive</li>
+      </ol>
+
+      <div class="info-box success fade-in">
+        <div class="info-title">✅ Ethical Principle</div>
+        <p>The goal is <strong>awareness improvement, not catching people out</strong>. Simulations should empower users with knowledge, not create a culture of fear.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"><p>🛡️ SecureBait — For authorized academic and educational purposes only.</p></footer>
+  <script src="../js/app.js"></script>
+</body>
+</html>

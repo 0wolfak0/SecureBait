@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lab Setup Design — How to structure a safe isolated environment for phishing simulation training.">
+  <title>Lab Setup Design — SecureBait</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-brand"><span class="shield">🛡️</span><span>SecureBait</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="lab-setup.html" class="active">Lab Setup</a></li>
+      <li><a href="simulation.html">Simulation</a></li>
+      <li><a href="templates.html">Templates</a></li>
+      <li><a href="login-concepts.html">Login Pages</a></li>
+      <li><a href="metrics.html">Metrics</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="prevention.html">Prevention</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="ethical-banner"><span class="icon">⚠️</span> EDUCATIONAL USE ONLY — Authorized academic training in isolated lab environments only.</div>
+
+  <main class="main-content">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <div class="hero-badge fade-in">🏗️ Module 01</div>
+      <h1 class="fade-in fade-in-d1">Lab Setup <span class="gradient-text">Architecture</span></h1>
+      <p class="fade-in fade-in-d2">How to structure a safe, isolated environment for phishing simulation training.</p>
+    </section>
+
+    <div class="page-content">
+      <div class="info-box warning fade-in">
+        <div class="info-title">⚠️ Critical Requirement</div>
+        <p>The lab environment must be <strong>completely isolated</strong> from production networks. No real user data, real domains, or internet-connected systems should be involved.</p>
+      </div>
+
+      <h2 class="fade-in">High-Level Architecture</h2>
+      <p class="fade-in">A phishing simulation lab consists of several isolated components communicating within a private virtual network. Below is the recommended architecture:</p>
+
+      <div class="arch-diagram fade-in">
+        <div class="arch-row">
+          <div class="arch-box amber">🧑‍🎓 Trainee Workstations<small>Simulated user endpoints</small></div>
+        </div>
+        <div class="arch-connector">↕</div>
+        <div class="arch-row">
+          <div class="arch-box blue">📧 Mail Server (Sandboxed)<small>e.g., hMailServer / Postfix</small></div>
+          <div class="arch-box cyan">🌐 Web Server (Isolated)<small>Mock phishing pages</small></div>
+        </div>
+        <div class="arch-connector">↕</div>
+        <div class="arch-row">
+          <div class="arch-box purple">🎯 GoPhish Server<small>Campaign management</small></div>
+          <div class="arch-box red">📊 Monitoring & Logging<small>ELK Stack / Grafana</small></div>
+        </div>
+        <div class="arch-connector">↕</div>
+        <div class="arch-row">
+          <div class="arch-box cyan">🔒 Isolated Virtual Network<small>No internet access — VLAN / Host-only</small></div>
+        </div>
+      </div>
+
+      <h2 class="fade-in">Core Components</h2>
+
+      <h3>1. Network Isolation Layer</h3>
+      <ul>
+        <li><strong>Virtual Network:</strong> Use host-only or internal-only networking in your hypervisor (VirtualBox, VMware, or Proxmox)</li>
+        <li><strong>No Internet Access:</strong> The simulation network must have zero connectivity to the outside internet</li>
+        <li><strong>DNS Spoofing (Internal):</strong> A local DNS server resolves fictional domains (e.g., <code>mail.training-example.local</code>) to internal IPs</li>
+        <li><strong>Firewall Rules:</strong> Block all egress traffic to prevent accidental data leakage</li>
+      </ul>
+
+      <h3>2. Simulation Server (GoPhish)</h3>
+      <ul>
+        <li>Open-source phishing simulation platform</li>
+        <li>Manages campaigns, email templates, and landing pages</li>
+        <li>Tracks user interactions (opens, clicks, submissions)</li>
+        <li>Runs on a dedicated VM within the isolated network</li>
+      </ul>
+
+      <h3>3. Mail Server (Sandboxed)</h3>
+      <ul>
+        <li>Local SMTP/IMAP server (e.g., hMailServer on Windows, Postfix on Linux)</li>
+        <li>Handles email delivery within the lab only</li>
+        <li>Pre-configured with dummy user accounts (e.g., <code>trainee01@training.local</code>)</li>
+        <li>No relay to external mail servers</li>
+      </ul>
+
+      <h3>4. Web Server (Training Pages)</h3>
+      <ul>
+        <li>Hosts mock phishing awareness pages</li>
+        <li>All pages include clear "TRAINING SIMULATION" banners</li>
+        <li>Served over HTTP within the isolated network (no real TLS certificates)</li>
+        <li>Captures form submissions for metrics (no real credential storage)</li>
+      </ul>
+
+      <h3>5. Trainee Workstations</h3>
+      <ul>
+        <li>Virtual machines simulating end-user desktops</li>
+        <li>Pre-configured email clients connected to the sandboxed mail server</li>
+        <li>Web browsers for interacting with simulation landing pages</li>
+        <li>Standard OS images (Windows 10/11 or Ubuntu Desktop)</li>
+      </ul>
+
+      <h3>6. Monitoring & Logging</h3>
+      <ul>
+        <li>Centralized logging of all simulation activity</li>
+        <li>Network traffic capture (Wireshark/tcpdump) for analysis</li>
+        <li>Dashboard for real-time campaign monitoring</li>
+        <li>All logs stored locally — no cloud services</li>
+      </ul>
+
+      <div class="info-box success fade-in">
+        <div class="info-title">✅ Best Practice</div>
+        <p>Document your lab setup thoroughly. Include network diagrams, IP assignments, VM configurations, and access credentials. This documentation serves as part of your academic submission.</p>
+      </div>
+
+      <h2 class="fade-in">Recommended Tools</h2>
+      <table class="report-table fade-in">
+        <thead>
+          <tr><th>Component</th><th>Recommended Tool</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hypervisor</td><td>VirtualBox / VMware</td><td>VM management & network isolation</td></tr>
+          <tr><td>Simulation Platform</td><td>GoPhish</td><td>Campaign orchestration & tracking</td></tr>
+          <tr><td>Attack OS</td><td>Kali Linux</td><td>Security testing tools & scripts</td></tr>
+          <tr><td>Mail Server</td><td>hMailServer / Postfix</td><td>Local email delivery</td></tr>
+          <tr><td>Web Server</td><td>Apache / Nginx</td><td>Hosting training landing pages</td></tr>
+          <tr><td>Monitoring</td><td>Wireshark / ELK</td><td>Traffic capture & log analysis</td></tr>
+          <tr><td>DNS</td><td>dnsmasq</td><td>Local DNS resolution for fictional domains</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="fade-in">Safety Checklist</h2>
+      <ul class="checklist fade-in">
+        <li>Lab network has zero internet connectivity</li>
+        <li>All domains used are fictional (e.g., <code>.local</code>, <code>.test</code>, <code>example.com</code>)</li>
+        <li>No real user data or PII is present in the lab</li>
+        <li>All training pages display clear simulation banners</li>
+        <li>Lab access is restricted to authorized participants only</li>
+        <li>Written authorization from academic supervisor is obtained</li>
+        <li>All simulation data is destroyed after the training exercise</li>
+        <li>Incident response plan exists in case of accidental exposure</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>🛡️ SecureBait — For authorized academic and educational purposes only.</p>
+  </footer>
+  <script src="../js/app.js"></script>
+</body>
+</html>

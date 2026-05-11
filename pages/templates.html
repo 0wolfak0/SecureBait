@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Email Simulation Templates — Annotated phishing email examples for educational awareness training.">
+  <title>Email Templates — SecureBait</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <nav class="navbar" id="navbar">
+    <a href="../index.html" class="nav-brand"><span class="shield">🛡️</span><span>SecureBait</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="lab-setup.html">Lab Setup</a></li>
+      <li><a href="simulation.html">Simulation</a></li>
+      <li><a href="templates.html" class="active">Templates</a></li>
+      <li><a href="login-concepts.html">Login Pages</a></li>
+      <li><a href="metrics.html">Metrics</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="prevention.html">Prevention</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="ethical-banner"><span class="icon">⚠️</span> EDUCATIONAL USE ONLY — Templates use fictional domains and are clearly labeled as training material.</div>
+
+  <main class="main-content">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <div class="hero-badge fade-in">📧 Module 03</div>
+      <h1 class="fade-in fade-in-d1">Email <span class="gradient-text">Templates</span></h1>
+      <p class="fade-in fade-in-d2">Annotated sample emails illustrating common phishing characteristics for educational analysis.</p>
+    </section>
+
+    <div class="page-content">
+      <div class="info-box warning fade-in">
+        <div class="info-title">⚠️ Training Material Only</div>
+        <p>All email templates below use <strong>fictional domains</strong> (e.g., <code>example.com</code>, <code>training.local</code>) and are clearly marked as simulation content. They must not be used outside of authorized training environments.</p>
+      </div>
+
+      <!-- Template 1 -->
+      <h2>Template 1: Password Expiry Alert</h2>
+      <div class="email-preview fade-in">
+        <div class="email-toolbar">
+          <span class="email-dot r"></span>
+          <span class="email-dot y"></span>
+          <span class="email-dot g"></span>
+        </div>
+        <div class="email-header">
+          <div><span class="label">From:</span> IT Security Team &lt;it-security@training-example.local&gt;</div>
+          <div><span class="label">To:</span> trainee@training.local</div>
+          <div><span class="label">Subject:</span> ⚠️ URGENT: Your Password Expires in 24 Hours</div>
+        </div>
+        <div class="email-body">
+          <p>Dear Employee,</p>
+          <p>Our records indicate that your network password will <strong>expire in 24 hours</strong>. To avoid losing access to your account, please reset your password immediately using the link below.</p>
+          <a class="btn-fake" href="javascript:void(0)" onclick="alert('🎓 TRAINING: This is a simulated phishing link. In a real attack, this would lead to a credential harvesting page. Always verify links before clicking!')">Reset My Password</a>
+          <p>If you do not reset your password within the next 24 hours, your account will be temporarily locked.</p>
+          <p>Thank you,<br><strong>IT Security Team</strong><br>training-example.local</p>
+        </div>
+        <div class="email-sim-banner">🎓 TRAINING SIMULATION EMAIL — This is NOT a real email. Used for phishing awareness education only.</div>
+      </div>
+
+      <div class="annotation fade-in">
+        <div class="tag">📝 Phishing Indicators to Identify</div>
+        <p><strong>Urgency:</strong> "Expires in 24 hours" creates pressure to act quickly without thinking.</p>
+      </div>
+      <div class="annotation fade-in">
+        <div class="tag">📝 Spoofed Sender</div>
+        <p>The "From" address uses a plausible but fictional domain. Real attackers often use domains that look similar to legitimate ones (e.g., <code>examp1e.com</code>).</p>
+      </div>
+      <div class="annotation fade-in">
+        <div class="tag">📝 Generic Greeting</div>
+        <p>"Dear Employee" — legitimate IT communications typically address users by name.</p>
+      </div>
+      <div class="annotation fade-in">
+        <div class="tag">📝 Threatening Consequences</div>
+        <p>"Account will be temporarily locked" — fear-based language pressures impulsive action.</p>
+      </div>
+
+      <!-- Template 2 -->
+      <h2>Template 2: Shared Document Notification</h2>
+      <div class="email-preview fade-in">
+        <div class="email-toolbar">
+          <span class="email-dot r"></span>
+          <span class="email-dot y"></span>
+          <span class="email-dot g"></span>
+        </div>
+        <div class="email-header">
+          <div><span class="label">From:</span> Document Sharing &lt;noreply@docs-training-example.local&gt;</div>
+          <div><span class="label">To:</span> trainee@training.local</div>
+          <div><span class="label">Subject:</span> John Smith shared "Q4 Budget Report" with you</div>
+        </div>
+        <div class="email-body">
+          <p>Hi there,</p>
+          <p><strong>John Smith</strong> has shared a document with you:</p>
+          <p style="background: #f0f4ff; padding: 12px; border-radius: 6px; border-left: 3px solid #4361ee;">
+            📄 <strong>Q4 Budget Report.xlsx</strong><br>
+            <span style="color: #888; font-size: 0.85rem;">Last modified: Today at 3:42 PM</span>
+          </p>
+          <a class="btn-fake" href="javascript:void(0)" onclick="alert('🎓 TRAINING: This link would typically redirect to a fake login page designed to steal credentials. Always verify document share notifications through the actual platform.')">Open Document</a>
+          <p style="color: #888; font-size: 0.8rem;">This link will expire in 7 days. If you were not expecting this document, please ignore this email.</p>
+        </div>
+        <div class="email-sim-banner">🎓 TRAINING SIMULATION EMAIL — This is NOT a real email. Used for phishing awareness education only.</div>
+      </div>
+
+      <div class="annotation fade-in">
+        <div class="tag">📝 Brand Impersonation</div>
+        <p>The email mimics the visual style of legitimate file-sharing notifications. The domain <code>docs-training-example.local</code> is designed to look plausible.</p>
+      </div>
+      <div class="annotation fade-in">
+        <div class="tag">📝 Trust Exploitation</div>
+        <p>Using a colleague's name ("John Smith") makes the email feel familiar and trustworthy — a common social engineering technique.</p>
+      </div>
+
+      <!-- Template 3 -->
+      <h2>Template 3: Account Suspicious Activity Alert</h2>
+      <div class="email-preview fade-in">
+        <div class="email-toolbar">
+          <span class="email-dot r"></span>
+          <span class="email-dot y"></span>
+          <span class="email-dot g"></span>
+        </div>
+        <div class="email-header">
+          <div><span class="label">From:</span> Security Alert &lt;security@account-training-example.local&gt;</div>
+          <div><span class="label">To:</span> trainee@training.local</div>
+          <div><span class="label">Subject:</span> 🔒 Unusual Sign-In Activity Detected on Your Account</div>
+        </div>
+        <div class="email-body">
+          <p>We detected an unusual sign-in attempt on your account:</p>
+          <table style="width:100%; font-size:0.85rem; margin:12px 0; border-collapse:collapse;">
+            <tr><td style="padding:6px; color:#888; border-bottom:1px solid #eee;">Location:</td><td style="padding:6px; border-bottom:1px solid #eee;"><strong>Moscow, Russia</strong></td></tr>
+            <tr><td style="padding:6px; color:#888; border-bottom:1px solid #eee;">Device:</td><td style="padding:6px; border-bottom:1px solid #eee;">Unknown Device — Linux</td></tr>
+            <tr><td style="padding:6px; color:#888;">Time:</td><td style="padding:6px;">Today at 2:17 AM</td></tr>
+          </table>
+          <p>If this was you, you can ignore this message. If not, please secure your account immediately:</p>
+          <a class="btn-fake" style="background:#ef476f;" href="javascript:void(0)" onclick="alert('🎓 TRAINING: Security alert emails are a common phishing vector. Always navigate directly to the service website instead of clicking email links.')">Secure My Account</a>
+          <p style="color:#888; font-size:0.8rem;">This is an automated message from Account Security.</p>
+        </div>
+        <div class="email-sim-banner">🎓 TRAINING SIMULATION EMAIL — This is NOT a real email. Used for phishing awareness education only.</div>
+      </div>
+
+      <div class="annotation fade-in">
+        <div class="tag">📝 Fear-Based Manipulation</div>
+        <p>"Moscow, Russia" and "Unknown Device" are chosen to trigger fear and urgency. Real attackers use alarming details to bypass critical thinking.</p>
+      </div>
+      <div class="annotation fade-in">
+        <div class="tag">📝 Defense Technique</div>
+        <p><strong>Never click links in security alert emails.</strong> Instead, manually navigate to the service's website by typing the URL directly in your browser.</p>
+      </div>
+
+      <h2>Key Takeaways</h2>
+      <div class="info-box success fade-in">
+        <div class="info-title">✅ What to Remember</div>
+        <p>All three templates demonstrate common phishing patterns: <strong>urgency, authority, fear, and trust exploitation</strong>. Recognizing these patterns is the first step in defense.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"><p>🛡️ SecureBait — For authorized academic and educational purposes only.</p></footer>
+  <script src="../js/app.js"></script>
+</body>
+</html>
