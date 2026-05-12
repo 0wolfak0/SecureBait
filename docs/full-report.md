@@ -26,10 +26,10 @@
 To design and evaluate a controlled, ethical phishing simulation project within a fully isolated lab environment for educational purposes. The project demonstrates how phishing attacks work and measures the effectiveness of awareness training interventions.
 
 ### Scope
-- **Environment:** Fully isolated virtual network (no internet access)
-- **Participants:** 50 simulated dummy user accounts
-- **Campaigns:** 3 phishing simulation campaigns over 6 months
-- **Tools:** GoPhish, Kali Linux, sandboxed mail/web servers
+- **Environment:** Kali Linux VM on Oracle VirtualBox (isolated lab)
+- **Participants:** 5 dummy user accounts (trainee01-05@localhost)
+- **Campaigns:** Password Reset phishing simulation
+- **Tools:** GoPhish v0.12.1, Kali Linux, Postfix SMTP (local only)
 - **Focus Areas:** Attack simulation, defense strategies, awareness metrics, and prevention
 
 ### Ethical Framework
@@ -76,17 +76,16 @@ To design and evaluate a controlled, ethical phishing simulation project within 
 └─────────────────────────────────────────────────────────┘
 ```
 
-### Core Components
+### Core Components (Actual Setup)
 
-| Component | Tool | Purpose |
+| Component | Tool Used | Purpose |
 |-----------|------|---------|
-| Hypervisor | VirtualBox / VMware | VM management & network isolation |
-| Simulation Platform | GoPhish | Campaign orchestration & tracking |
-| Attack OS | Kali Linux | Security testing tools |
-| Mail Server | hMailServer / Postfix | Local email delivery (sandboxed) |
-| Web Server | Apache / Nginx | Hosting training landing pages |
-| Monitoring | Wireshark / ELK Stack | Traffic capture & log analysis |
-| DNS | dnsmasq | Local DNS for fictional domains |
+| Hypervisor | Oracle VirtualBox | VM management & network isolation |
+| Simulation Platform | GoPhish v0.12.1 | Campaign orchestration & tracking |
+| Lab OS | Kali Linux (Debian-based) | Hosts GoPhish + Postfix + landing pages |
+| Mail Server | Postfix (local only) | Local SMTP email delivery |
+| Landing Page | HTML Phishing Page | Fake login page served by GoPhish phish server |
+| Tracking | GoPhish built-in | Email opens, link clicks, form submissions |
 
 ### Safety Requirements
 - ✅ Lab network has zero internet connectivity
@@ -285,27 +284,40 @@ In training simulations, when a user clicks a phishing link, they should land on
 | Time to Report | Average time between delivery and report | 📉 Decrease |
 | Training Completion | % who completed post-click training | 📈 Reach 100% |
 
-### Simulated Campaign Results (Sample Data)
+### Actual Campaign Results (GoPhish Data)
 
-| Metric | Campaign 1 (Baseline) | Campaign 2 (Post-Training) | Campaign 3 (Advanced) | Overall Change |
-|--------|-----------------------|----------------------------|------------------------|----------------|
-| Email Open Rate | 82% | 75% | 68% | 📉 -17% |
-| Click-Through Rate | 45% | 22% | 11% | 📉 -75% |
-| Credential Submission | 28% | 10% | 3% | 📉 -89% |
-| Reporting Rate | 8% | 35% | 62% | 📈 +675% |
-| Avg Time to Report | 47 min | 12 min | 3 min | 📉 -93% |
+**Campaign:** Password Reset Phishing Simulation
+**Platform:** GoPhish v0.12.1 on Kali Linux (VirtualBox)
+**Email Template:** Password Expiry Alert (urgency-based)
+**Landing Page:** Fake login page with email/password form
+**Mail Server:** Postfix (local only, localhost delivery)
 
-### Awareness Improvement Indicators
-- **Susceptibility Reduction:** % decrease in CTR between first and latest campaigns
-- **Response Time Improvement:** Faster reporting indicates better situational awareness
-- **Training Engagement:** Post-simulation training completion rates
-- **Departmental Analysis:** Metrics broken down by team to identify high-risk groups
+| User | Role | Email Sent | Clicked Link | Submitted Data |
+|------|------|-----------|-------------|----------------|
+| Alice Johnson | Analyst | ✅ | ✅ | ✅ (fell for it) |
+| Bob Smith | Manager | ✅ | ✅ | ❌ (clicked but didn't submit) |
+| Carol Williams | Developer | ✅ | ✅ | ✅ (fell for it) |
+| Dave Brown | HR Staff | ✅ | ❌ | ❌ (ignored email) |
+| Eve Davis | Accountant | ✅ | ❌ | ❌ (ignored email) |
+
+| Metric | Result |
+|--------|--------|
+| Emails Sent | 5 (100%) |
+| Links Clicked | 3 (60%) |
+| Credentials Submitted | 2 (40%) |
+| No Interaction | 2 (40%) |
+
+### Key Observations
+- **60% click-through rate** — demonstrates that urgency-based phishing is highly effective
+- **40% credential submission** — users who clicked were likely to submit data
+- **40% ignored the email** — some users showed natural resistance
+- Urgency language ("expires in 24 hours") was the primary manipulation vector
 
 ### Privacy Considerations
-- Present results at aggregate/team level, not individual level
-- Define a data retention period (e.g., 12 months)
-- Ensure participants are informed that testing is part of the training program
-- Never use simulation results for disciplinary action
+- All user accounts are fictional dummy accounts
+- No real credentials were captured or stored
+- Data retained only for academic reporting purposes
+- Results used for educational analysis, not punitive action
 
 ---
 
@@ -318,23 +330,25 @@ State the purpose, scope, participants, environment, and authorization.
 
 #### 2. Methodology
 
-| Phase | Description | Duration |
-|-------|-------------|----------|
-| Setup | Configured isolated lab with GoPhish, mail server, 50 dummy accounts | Week 1-2 |
-| Baseline | Initial simulation (password reset scenario) | Week 3 |
-| Training | Awareness training on phishing indicators and defense | Week 4-6 |
-| Post-Training | Second simulation (shared document scenario) | Week 8 |
-| Advanced | Third simulation (BEC/authority scenario) | Week 12 |
-| Analysis | Compiled metrics, analyzed patterns, prepared findings | Week 13-14 |
+| Phase | Description | Tools Used |
+|-------|-------------|------------|
+| VM Setup | Created Kali Linux VM in Oracle VirtualBox | VirtualBox, Kali Linux ISO |
+| GoPhish Install | Downloaded and configured GoPhish v0.12.1 | GoPhish, wget |
+| Mail Server | Installed Postfix as local-only SMTP server | Postfix, mailutils |
+| User Creation | Created 5 dummy trainee accounts on local system | useradd |
+| Template Design | Created HTML phishing email (password expiry theme) | GoPhish template editor |
+| Landing Page | Built fake login page as GoPhish landing page | HTML, GoPhish |
+| Campaign Launch | Configured and launched phishing campaign | GoPhish campaign manager |
+| Data Collection | Monitored email opens, clicks, and submissions | GoPhish tracking dashboard |
+| Analysis | Exported CSV results and compiled findings | GoPhish CSV export |
 
 #### 3. Results Summary
-Present campaign comparison table with key aggregate metrics (see Section 6).
 
-**Key Outcomes:**
-- 75% reduction in click-through rate
-- 7.7× increase in reporting rate
-- 89% training completion rate
-- Average report time decreased from 47 min to 3 min
+**Key Outcomes from actual GoPhish simulation:**
+- 5 emails sent, 3 links clicked (60% CTR)
+- 2 out of 5 users submitted credentials (40%)
+- 2 users showed natural resistance (ignored the email)
+- Urgency-based social engineering proved highly effective
 
 #### 4. User Behavior Insights
 - **Impulsive Clickers (~15%):** Clicked within 30 seconds; benefited most from training

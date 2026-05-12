@@ -4,15 +4,34 @@
 
 ## Overview
 
-SecureBait is an interactive cybersecurity education platform that demonstrates how phishing attacks work and teaches users to identify and defend against them. It includes:
+SecureBait is a phishing simulation and awareness training project that demonstrates how phishing attacks work and teaches users to identify and defend against them. The project includes a **live GoPhish simulation** running on Kali Linux and an **interactive web-based training platform**.
 
-- **Lab Setup Architecture** — Isolated simulation environment design
-- **Phishing Simulation Scenarios** — Training-only threat demonstrations
-- **Email Template Gallery** — Annotated examples of phishing characteristics
-- **Fake Login Page Concepts** — Awareness-focused UI analysis
-- **Tracking & Metrics Dashboard** — Simulation analytics concepts
-- **Analysis Report Builder** — Structured reporting framework
-- **Prevention & Awareness Guide** — Practical defense strategies
+## Tools Used
+
+| Tool | Purpose | Status |
+|------|---------|--------|
+| **GoPhish** | Phishing simulation platform — campaign management, email delivery, tracking | ✅ Active |
+| **Kali Linux** | Lab environment (VirtualBox VM) hosting all simulation tools | ✅ Active |
+| **Postfix** | Local sandboxed SMTP email server for email delivery | ✅ Active |
+| **HTML Phishing Page** | Fake login page used as GoPhish landing page | ✅ Active |
+
+## Deliverables
+
+| Deliverable | Location |
+|---|---|
+| Phishing simulation results | GoPhish CSV export + screenshots |
+| Attack analysis report | `docs/full-report.md` |
+| Security awareness guide | `pages/prevention.html` + `docs/full-report.md` |
+| Fake login phishing page | `pages/fake-login-demo.html` + GoPhish landing page |
+| Lab setup documentation | `docs/lab-setup-guide.md` |
+
+## Simulation Summary
+
+- **Campaign:** Password Reset Phishing Simulation
+- **Targets:** 5 dummy users on isolated local mail server
+- **Results:** Tracked email opens, link clicks, and credential submissions
+- **Platform:** GoPhish on Kali Linux (VirtualBox VM)
+- **Mail Server:** Postfix (local only, no internet access)
 
 ## Tech Stack
 
