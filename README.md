@@ -1,6 +1,6 @@
-# 🛡️ SecureBait — Phishing Awareness & Defense Training Platform
+#  SecureBait — Phishing Awareness & Defense Training Platform
 
-> **⚠️ EDUCATIONAL USE ONLY** — This project is designed exclusively for authorized academic training in controlled, isolated lab environments. It must NOT be used against real users, real domains, or real systems.
+> ** EDUCATIONAL USE ONLY** — This project is designed exclusively for authorized academic training in controlled, isolated lab environments. It must NOT be used against real users, real domains, or real systems.
 
 ## Overview
 
@@ -10,10 +10,10 @@ SecureBait is a phishing simulation and awareness training project that demonstr
 
 | Tool | Purpose | Status |
 |------|---------|--------|
-| **GoPhish** | Phishing simulation platform — campaign management, email delivery, tracking | ✅ Active |
-| **Kali Linux** | Lab environment (VirtualBox VM) hosting all simulation tools | ✅ Active |
-| **Postfix** | Local sandboxed SMTP email server for email delivery | ✅ Active |
-| **HTML Phishing Page** | Fake login page used as GoPhish landing page | ✅ Active |
+| **GoPhish** | Phishing simulation platform — campaign management, email delivery, tracking |  Active |
+| **Kali Linux** | Lab environment (VirtualBox VM) hosting all simulation tools |  Active |
+| **Postfix** | Local sandboxed SMTP email server for email delivery | Active |
+| **HTML Phishing Page** | Fake login page used as GoPhish landing page |  Active |
 
 ## Deliverables
 
